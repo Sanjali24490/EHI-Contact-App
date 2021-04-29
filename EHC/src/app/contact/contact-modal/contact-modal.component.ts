@@ -38,13 +38,17 @@ export class ContactModalComponent implements OnInit {
   public contactForm = new FormGroup({
     FName: new FormControl('', Validators.compose([Validators.required])),
     LName: new FormControl('', Validators.compose([Validators.required])),
-    Email: new FormControl('', Validators.compose([Validators.required])),
+    Email: new FormControl(
+      '',
+      Validators.compose([Validators.required, Validators.email])
+    ),
     Mobile: new FormControl(
       '',
       Validators.compose([
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(10),
+        Validators.pattern('[0-9]{10}$'),
       ])
     ),
     Status: new FormControl(false),
