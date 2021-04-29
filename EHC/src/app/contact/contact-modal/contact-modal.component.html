@@ -1,0 +1,44 @@
+<div
+  [formGroup]="contactForm"
+  fxLayout="column"
+  class="contact-modal-container"
+>
+  <div fxFlex="80">
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" formControlName="FName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput type="text" formControlName="LName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="Email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Mobile</mat-label>
+      <input matInput type="text" formControlName="Mobile" />
+    </mat-form-field>
+    <div>
+      InActive
+      <mat-slide-toggle
+        class="example-margin"
+        color="accent"
+        formControlName="Status"
+        >Active
+      </mat-slide-toggle>
+    </div>
+    <div fxLayoutAlign="end end" fxLayoutGap="15px">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="onSave()"
+        [disabled]="contactForm.invalid"
+      >
+        Save
+      </button>
+      <button mat-raised-button (click)="onCancel()">Cancel</button>
+    </div>
+  </div>
+</div>

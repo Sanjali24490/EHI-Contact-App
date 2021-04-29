@@ -1,0 +1,34 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="15px"
+  class="contact-container"
+>
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center" class="full-width">
+    <div fxFlex="20" [hidden]="!isOpenContactModal">
+      <app-contact-modal
+        [contact]="contactDetails"
+        (onModalEvent)="onModalEvent()"
+      ></app-contact-modal>
+    </div>
+    <div fxFlex="80" class="grid-container" [hidden]="isOpenContactModal">
+      <div fxLayoutAlign="end end" fxLayoutGap="15px" class="action-btn">
+        <button
+          mat-mini-fab
+          (click)="isOpenContactModal = !isOpenContactModal"
+          color="primary"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+      <div>
+        <app-contact-grid
+          (onEditContact)="onEditContact($event)"
+        ></app-contact-grid>
+      </div>
+    </div>
+  </div>
+</div>

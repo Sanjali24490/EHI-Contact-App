@@ -1,0 +1,35 @@
+<div fxLayout="column wrap" class="contact-grid-container" fxFlex="100" fxFill>
+  <table mat-table [dataSource]="gridData" class="mat-elevation-z8">
+    <ng-container
+      *ngFor="let column of displayedColumns"
+      [matColumnDef]="column"
+    >
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        [ngClass]="{ 'action-column': column === 'Action' }"
+      >
+        {{ column }}
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element; let index = index"
+        [ngClass]="{ 'action-column': column === 'Action' }"
+      >
+        <span *ngIf="column !== 'Action'">
+          {{ element[getColumnKey(column)] }}
+        </span>
+        <span *ngIf="column === 'Action'">
+          <button mat-icon-button (click)="onEdit(index)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="onDelete(index)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
